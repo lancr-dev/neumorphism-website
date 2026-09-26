@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Discover neumorphism: soft surfaces, subtle shadows, and interfaces that feel tangible. Explore components and experiment with your own design."
+    />
+    <meta name="theme-color" content="#e6eaf0" />
+    <title>Softform — Explore Neumorphism</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23e6eaf0'/%3E%3Cpath d='M22 10H13a4 4 0 0 0 0 8h6a2 2 0 0 1 0 4H10' fill='none' stroke='%232d50c7' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container site-header-inner">
+        <a class="brand" href="#home" aria-label="Softform home">
+          <span class="brand-mark" aria-hidden="true">s.</span>
+          <span class="brand-name"
+            >softform<span class="brand-dot">.</span></span
+          >
+        </a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-navigation"
+          data-nav-toggle
+          hidden
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <span>Menu</span>
+        </button>
+        <nav
+          class="site-nav"
+          id="primary-navigation"
+          aria-label="Primary navigation"
+        >
+          <ul class="nav-list">
+            <li><a class="nav-link" href="#home">Home</a></li>
+            <li><a class="nav-link" href="#about">About</a></li>
+            <li><a class="nav-link" href="#explore">Explore</a></li>
+            <li><a class="nav-link" href="#principles">Design tips</a></li>
+          </ul>
+          <a class="button button-primary nav-action" href="#playground"
+            >Try the playground</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+      <section class="hero section" id="home" aria-labelledby="home-title">
+        <div class="container hero-layout">
+          <div class="hero-content">
+            <p class="eyebrow">A softer side of interface design</p>
+            <h1 class="hero-title" id="home-title">
+              Meet neumorphism.<br /><span class="text-accent"
+                >Feel the difference.</span
+              >
+            </h1>
+            <p class="hero-description">
+              Turn a flat screen into something that feels almost touchable.
+              Discover how light, shadow, and a shared surface can give your
+              next interface a quiet sense of depth.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#explore"
+                >Explore the style</a
+              >
+              <a class="button button-secondary" href="#about"
+                >What is neumorphism?</a
+              >
+            </div>
+            <ul class="hero-tags" aria-label="Characteristics of neumorphism">
+              <li>Soft shadows</li>
+              <li>Tactile surfaces</li>
+              <li>Subtle depth</li>
+            </ul>
+          </div>
+          <figure class="hero-showcase" aria-labelledby="hero-showcase-caption">
+            <div class="surface-composition" aria-hidden="true">
+              <div class="surface-orbit">
+                <div class="surface-orbit-center">s.</div>
+              </div>
+              <div class="surface-samples">
+                <div class="surface-sample surface-sample-raised">
+                  <span>Raised</span>
+                </div>
+                <div class="surface-sample surface-sample-inset">
+                  <span>Inset</span>
+                </div>
+              </div>
+              <div class="surface-light">
+                <span class="surface-light-line"></span
+                ><span>One surface. Two shadows.</span>
+              </div>
+            </div>
+            <figcaption id="hero-showcase-caption">
+              Raised shapes emerge from the surface. Inset shapes settle into
+              it.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="about section" id="about" aria-labelledby="about-title">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">01 / Understand the idea</p>
+            <h2 id="about-title">
+              A little light. A little shadow.<br />A whole new feeling.
+            </h2>
+            <p>
+              Neumorphism, often called soft UI, makes elements appear molded
+              from their background. A light shadow and a dark shadow suggest
+              depth while the element and its surroundings share a similar
+              color.
+            </p>
+          </div>
+          <div class="about-grid">
+            <article class="feature-card">
+              <span class="feature-number" aria-hidden="true">01</span>
+              <h3>A shared surface</h3>
+              <p>
+                The page and its components use related colors, so controls feel
+                like part of one continuous material.
+              </p>
+            </article>
+            <article class="feature-card">
+              <span class="feature-number" aria-hidden="true">02</span>
+              <h3>Light creates depth</h3>
+              <p>
+                Opposing light and dark shadows suggest a consistent light
+                source. Their distance and softness shape the effect.
+              </p>
+            </article>
+            <article class="feature-card">
+              <span class="feature-number" aria-hidden="true">03</span>
+              <h3>Interaction feels tangible</h3>
+              <p>
+                A raised button can settle inward when pressed. Small changes in
+                depth help an interface respond to touch.
+              </p>
+            </article>
+          </div>
+          <aside class="design-note" aria-labelledby="design-note-title">
+            <h3 id="design-note-title">Soft surfaces. Clear communication.</h3>
+            <p>
+              Keep text, boundaries, and focus indicators easy to see. Shadows
+              create the aesthetic; labels and visible states make it usable.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section
+        class="explore section"
+        id="explore"
+        aria-labelledby="explore-title"
+      >
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">02 / Explore the details</p>
+            <h2 id="explore-title">
+              Small components.<br />Plenty of personality.
+            </h2>
+            <p>
+              Try these everyday controls and imagine how a softer treatment
+              could fit into your own project.
+            </p>
+          </div>
+          <div class="component-grid">
+            <article class="component-card">
+              <div class="component-preview component-preview-buttons">
+                <a class="button button-primary" href="#playground"
+                  >Make it yours</a
+                >
+                <a class="button button-secondary" href="#principles"
+                  >Design tips</a
+                >
+              </div>
+              <div class="component-description">
+                <p class="component-label">Action</p>
+                <h3>Buttons with depth</h3>
+                <p>
+                  A raised surface invites a press. A distinct accent makes the
+                  primary action easy to find.
+                </p>
+              </div>
+            </article>
+            <article class="component-card">
+              <div class="component-preview">
+                <label class="switch-control" for="demo-switch">
+                  <input
+                    class="switch-input"
+                    id="demo-switch"
+                    type="checkbox"
+                    checked
+                  />
+                  <span class="switch-track" aria-hidden="true"
+                    ><span class="switch-thumb"></span
+                  ></span>
+                  <span class="switch-label">Soft lighting</span>
+                </label>
+              </div>
+              <div class="component-description">
+                <p class="component-label">Selection</p>
+                <h3>A tactile toggle</h3>
+                <p>
+                  Try the switch. Its thumb position and checked state
+                  communicate selection alongside the shadow.
+                </p>
+              </div>
+            </article>
+            <article class="component-card">
+              <div class="component-preview">
+                <div class="field-demo">
+                  <label class="field-label" for="demo-project-name"
+                    >Your next project</label
+                  >
+                  <input
+                    class="text-input"
+                    id="demo-project-name"
+                    type="text"
+                    placeholder="A portfolio, perhaps?"
+                    maxlength="80"
+                    aria-describedby="demo-project-help"
+                  />
+                  <small id="demo-project-help"
+                    >Try typing. This demo does not save or send your
+                    text.</small
+                  >
+                </div>
+              </div>
+              <div class="component-description">
+                <p class="component-label">Input</p>
+                <h3>A place to settle in</h3>
+                <p>
+                  An inset field suggests a space for input. A visible label and
+                  boundary keep its purpose clear.
+                </p>
+              </div>
+            </article>
+            <article class="component-card">
+              <div class="component-preview">
+                <fieldset class="segment-control">
+                  <legend class="field-label">Your preferred size</legend>
+                  <div class="segment-options">
+                    <label class="segment-option"
+                      ><input
+                        type="radio"
+                        name="demo-size"
+                        value="small"
+                      /><span>Small</span></label
+                    >
+                    <label class="segment-option"
+                      ><input
+                        type="radio"
+                        name="demo-size"
+                        value="medium"
+                        checked
+                      /><span>Medium</span></label
+                    >
+                    <label class="segment-option"
+                      ><input
+                        type="radio"
+                        name="demo-size"
+                        value="large"
+                      /><span>Large</span></label
+                    >
+                  </div>
+                </fieldset>
+              </div>
+              <div class="component-description">
+                <p class="component-label">Choice</p>
+                <h3>Selection you can see</h3>
+                <p>
+                  Choose an option to compare its selected treatment. Inset
+                  depth and a clear outline can work together.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="playground section"
+        id="playground"
+        aria-labelledby="playground-title"
+      >
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">03 / Make it your own</p>
+            <h2 id="playground-title">Your first soft surface.</h2>
+            <p>
+              Adjust the depth, softness, and corners. See how a few small
+              changes shape the character of a component.
+            </p>
+          </div>
+          <p
+            class="playground-notice"
+            id="playground-notice"
+            data-playground-notice
+          >
+            The interactive controls require JavaScript. You can still explore
+            the default CSS example below.
+          </p>
+          <div class="playground-layout">
+            <form
+              class="playground-form"
+              id="playground-form"
+              aria-describedby="playground-notice"
+            >
+              <fieldset
+                class="playground-controls"
+                data-playground-controls
+                disabled
+              >
+                <legend>Surface settings</legend>
+                <div class="control-group">
+                  <label class="control-label" for="surface-style"
+                    >Surface style</label
+                  >
+                  <select
+                    class="select-input"
+                    id="surface-style"
+                    name="surface-style"
+                  >
+                    <option value="raised" selected>Raised</option>
+                    <option value="inset">Inset</option>
+                  </select>
+                </div>
+                <div class="control-group">
+                  <div class="control-heading">
+                    <label for="shadow-distance">Shadow distance</label
+                    ><output id="shadow-distance-output" for="shadow-distance"
+                      >10 px</output
+                    >
+                  </div>
+                  <input
+                    class="range-input"
+                    id="shadow-distance"
+                    name="shadow-distance"
+                    type="range"
+                    min="2"
+                    max="24"
+                    value="10"
+                    step="1"
+                    data-unit="px"
+                  />
+                </div>
+                <div class="control-group">
+                  <div class="control-heading">
+                    <label for="shadow-blur">Shadow blur</label
+                    ><output id="shadow-blur-output" for="shadow-blur"
+                      >20 px</output
+                    >
+                  </div>
+                  <input
+                    class="range-input"
+                    id="shadow-blur"
+                    name="shadow-blur"
+                    type="range"
+                    min="4"
+                    max="48"
+                    value="20"
+                    step="1"
+                    data-unit="px"
+                  />
+                </div>
+                <div class="control-group">
+                  <div class="control-heading">
+                    <label for="corner-radius">Corner radius</label
+                    ><output id="corner-radius-output" for="corner-radius"
+                      >32 px</output
+                    >
+                  </div>
+                  <input
+                    class="range-input"
+                    id="corner-radius"
+                    name="corner-radius"
+                    type="range"
+                    min="0"
+                    max="80"
+                    value="32"
+                    step="1"
+                    data-unit="px"
+                  />
+                </div>
+                <button class="button button-secondary" type="reset">
+                  Reset settings
+                </button>
+              </fieldset>
+            </form>
+            <div class="playground-result">
+              <figure
+                class="playground-preview"
+                aria-labelledby="surface-preview-caption"
+              >
+                <div
+                  class="playground-surface"
+                  id="playground-surface"
+                  data-surface-style="raised"
+                >
+                  <span>Soft by design.</span>
+                </div>
+                <figcaption id="surface-preview-caption">
+                  Preview:
+                  <span id="surface-preview-label">Raised surface</span>
+                </figcaption>
+              </figure>
+              <div class="code-panel">
+                <div class="code-panel-header">
+                  <h3 id="css-example-title">Take the CSS with you</h3>
+                  <button
+                    class="button button-small"
+                    type="button"
+                    data-copy-css
+                    hidden
+                  >
+                    Copy CSS
+                  </button>
+                </div>
+                <pre
+                  class="code-block"
+                  tabindex="0"
+                  aria-labelledby="css-example-title"
+                ><code id="generated-css">/* Use on a matching #e6eaf0 background. */
+  .soft-surface {
+    background: #e6eaf0;
+    border-radius: 32px;
+    box-shadow:
+      10px 10px 20px #c4c7cc,
+      -10px -10px 20px #f8fbff;
+  }</code>
+</pre>
+                <p class="copy-status" id="copy-status" role="status"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="principles section"
+        id="principles"
+        aria-labelledby="principles-title"
+      >
+        <div class="container principles-layout">
+          <div class="section-heading">
+            <p class="eyebrow">04 / Design with intention</p>
+            <h2 id="principles-title">
+              Keep the softness.<br />Make the purpose clear.
+            </h2>
+            <p>
+              Start with one component, such as a settings panel or a featured
+              card. Give it depth where that depth helps someone understand what
+              to do.
+            </p>
+            <a class="text-link" href="#playground"
+              >Experiment with a surface</a
+            >
+          </div>
+          <ol class="principles-list">
+            <li class="principle-item">
+              <h3>Give light a direction</h3>
+              <p>
+                Keep the light shadow toward one corner and the dark shadow
+                opposite it. A consistent light source makes surfaces feel
+                related.
+              </p>
+            </li>
+            <li class="principle-item">
+              <h3>Let important details stand out</h3>
+              <p>
+                Use readable text, visible field boundaries, and clear keyboard
+                focus. Never make shadow or color the only sign of a selected
+                state.
+              </p>
+            </li>
+            <li class="principle-item">
+              <h3>Leave room to breathe</h3>
+              <p>
+                Separate components enough for their shadows to stay distinct.
+                Use flatter surfaces for dense content and supporting
+                information.
+              </p>
+            </li>
+            <li class="principle-item">
+              <h3>Design for fingers and keyboards</h3>
+              <p>
+                Make controls comfortable to tap, preserve native behavior, and
+                check the layout on small screens as well as larger displays.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="faq section" id="faq" aria-labelledby="faq-title">
+        <div class="container faq-layout">
+          <div class="section-heading">
+            <p class="eyebrow">A few things to know</p>
+            <h2 id="faq-title">Curious? Good.</h2>
+            <p>Here is where neumorphism can fit into your design process.</p>
+          </div>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>How is it different from skeuomorphism?</summary>
+              <div class="faq-answer">
+                <p>
+                  Skeuomorphism borrows the appearance of real objects, such as
+                  leather textures or physical dials. Neumorphism uses a more
+                  restrained treatment: similar surface colors and paired
+                  shadows that suggest raised or recessed shapes.
+                </p>
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>Should I use it across an entire website?</summary>
+              <div class="faq-answer">
+                <p>
+                  You can, but depth works best with a clear hierarchy. Start
+                  with a few controls or cards and leave ordinary text areas
+                  flat. Too many competing shadows can make an interface harder
+                  to scan.
+                </p>
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>Can a soft interface be accessible?</summary>
+              <div class="faq-answer">
+                <p>
+                  The visual style alone does not establish accessibility. Keep
+                  sufficient contrast, visible focus, persistent labels, and
+                  meaningful control states. Check keyboard operation, zoom,
+                  screen readers, and real devices as part of your
+                  implementation.
+                </p>
+              </div>
+            </details>
+            <details class="faq-item">
+              <summary>Do I need a framework or a design library?</summary>
+              <div class="faq-answer">
+                <p>
+                  No. Semantic HTML, CSS backgrounds and shadows, and a little
+                  JavaScript for interactive behavior are enough to build a
+                  showcase like this one.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing section" aria-labelledby="closing-title">
+        <div class="container">
+          <div class="closing-panel">
+            <p class="eyebrow">Start with a single surface</p>
+            <h2 id="closing-title">Give your next idea<br />a softer touch.</h2>
+            <p>
+              One button. One card. One small experiment. Find the balance
+              between a memorable surface and an interface people enjoy using.
+            </p>
+            <a class="button button-primary" href="#playground"
+              >Create your soft surface</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer-inner">
+        <div class="footer-brand">
+          <a class="brand" href="#home">softform.</a>
+          <p>A study in light, shadow, and thoughtful interfaces.</p>
+        </div>
+        <nav aria-label="Footer navigation">
+          <ul class="footer-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#explore">Explore</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#home">Back to top</a></li>
+          </ul>
+        </nav>
+        <p class="footer-note">Neumorphism Website Showcase</p>
+      </div>
+    </footer>
+  </body>
+</html>
