@@ -319,14 +319,13 @@ small {
   text-decoration: none;
 }
 .brand-mark {
-  display: grid;
-  place-items: center;
+  display: block;
+  flex-shrink: 0;
   width: 2.75rem;
   height: 2.75rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-small);
   box-shadow: var(--shadow-subtle);
-  color: var(--color-accent);
 }
 .brand-dot {
   color: var(--color-accent);
@@ -396,7 +395,9 @@ small {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-large) 0 0 var(--radius-large);
   background: var(--color-surface);
-  box-shadow: -12px 0 32px rgb(32 43 64 / 18%), inset 3px 0 8px var(--shadow-light);
+  box-shadow:
+    -12px 0 32px rgb(32 43 64 / 18%),
+    inset 3px 0 8px var(--shadow-light);
   color: var(--color-text);
 }
 .nav-drawer::backdrop {
