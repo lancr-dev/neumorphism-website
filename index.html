@@ -33,7 +33,8 @@
           class="nav-toggle"
           type="button"
           aria-expanded="false"
-          aria-controls="primary-navigation"
+          aria-controls="navigation-drawer"
+          aria-haspopup="dialog"
           data-nav-toggle
           hidden
         >
@@ -68,6 +69,38 @@
           >
         </nav>
       </div>
+      <dialog
+        class="nav-drawer"
+        id="navigation-drawer"
+        aria-labelledby="navigation-title"
+      >
+        <div class="nav-drawer-heading">
+          <h2 id="navigation-title">
+            Explore softform<span class="brand-dot">.</span>
+          </h2>
+          <button
+            class="button button-small nav-close"
+            type="button"
+            aria-label="Close navigation"
+            data-nav-close
+            autofocus
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="m6 6 12 12M6 18 18 6"></path>
+            </svg>
+          </button>
+        </div>
+      </dialog>
     </header>
 
     <main id="main-content" tabindex="-1">

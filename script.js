@@ -5,11 +5,28 @@
     const header = document.querySelector('.site-header');
     const toggle = document.querySelector('[data-nav-toggle]');
     const navigation = document.getElementById('primary-navigation');
+    const drawer = document.getElementById('navigation-drawer');
+    const closeButton = document.querySelector('[data-nav-close]');
+
+    // Keep anchor destinations below the sticky header, including at high zoom.
+    if (header) {
+      const updateHeaderHeight = () => {
+        document.documentElement.style.setProperty(
+          '--header-height',
+          `${header.offsetHeight}px`,
+        );
+      };
+      updateHeaderHeight();
+      new ResizeObserver(updateHeaderHeight).observe(header);
+    }
 
     if (
       !header ||
       !toggle ||
       !navigation ||
+      !drawer ||
+      !closeButton ||
+      typeof drawer.showModal !== 'function' ||
       header.hasAttribute('data-nav-ready')
     ) {
       return;
@@ -18,24 +35,33 @@
     // Matches the desktop navigation breakpoint in style.css.
     const desktopQuery = window.matchMedia('(min-width: 64rem)');
     const firstLink = navigation.querySelector('a[href]');
+    const navigationSlot = document.createComment('Desktop navigation');
+    navigation.before(navigationSlot);
 
-    const isOpen = () => toggle.getAttribute('aria-expanded') === 'true';
-
-    function setOpen(open, restoreFocus = false) {
-      toggle.setAttribute('aria-expanded', String(open));
-
-      if (restoreFocus) {
-        toggle.focus({ preventScroll: true });
-      }
+    function closeDrawer() {
+      drawer.close();
+      toggle.setAttribute('aria-expanded', 'false');
+      document.documentElement.classList.remove('nav-open');
     }
 
     function synchronizeLayout() {
       const focusedElement = document.activeElement;
+      const focusWasInDrawer = drawer.contains(focusedElement);
 
-      setOpen(desktopQuery.matches);
+      closeDrawer();
+
+      // Share one navigation so links and current-section state stay in sync.
+      if (desktopQuery.matches) {
+        navigationSlot.after(navigation);
+      } else {
+        drawer.append(navigation);
+      }
 
       // Move focus away from controls hidden by the new layout.
-      if (desktopQuery.matches && focusedElement === toggle) {
+      if (
+        desktopQuery.matches &&
+        (focusedElement === toggle || focusWasInDrawer)
+      ) {
         firstLink?.focus({ preventScroll: true });
       } else if (!desktopQuery.matches && navigation.contains(focusedElement)) {
         toggle.focus({ preventScroll: true });
@@ -44,7 +70,9 @@
 
     toggle.addEventListener('click', () => {
       if (!desktopQuery.matches) {
-        setOpen(!isOpen());
+        drawer.showModal();
+        toggle.setAttribute('aria-expanded', 'true');
+        document.documentElement.classList.add('nav-open');
       }
     });
 
@@ -69,7 +97,7 @@
 
       if (!target) return;
 
-      setOpen(false);
+      closeDrawer();
 
       // Preserve native anchor scrolling and browser history.
       // Move focus out of the collapsed navigation.
@@ -86,23 +114,35 @@
       target.focus({ preventScroll: true });
     });
 
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && !desktopQuery.matches && isOpen()) {
-        event.preventDefault();
-        setOpen(false, true);
-      }
+    closeButton.addEventListener('click', closeDrawer);
+
+    drawer.addEventListener('cancel', (event) => {
+      event.preventDefault();
+      closeDrawer();
     });
 
-    document.addEventListener('pointerdown', (event) => {
-      if (!desktopQuery.matches && isOpen() && !header.contains(event.target)) {
-        setOpen(false, navigation.contains(document.activeElement));
-      }
+    drawer.addEventListener('close', () => {
+      if (drawer.open) return;
+      toggle.setAttribute('aria-expanded', 'false');
+      document.documentElement.classList.remove('nav-open');
     });
 
-    document.addEventListener('focusin', (event) => {
-      if (!desktopQuery.matches && isOpen() && !header.contains(event.target)) {
-        setOpen(false);
-      }
+    function isBackdrop(event) {
+      const bounds = drawer.getBoundingClientRect();
+      return (
+        event.target === drawer &&
+        (event.clientX < bounds.left || event.clientX > bounds.right ||
+          event.clientY < bounds.top || event.clientY > bounds.bottom)
+      );
+    }
+
+    let pointerStartedOnBackdrop = false;
+    drawer.addEventListener('pointerdown', (event) => {
+      pointerStartedOnBackdrop = isBackdrop(event);
+    });
+    drawer.addEventListener('click', (event) => {
+      if (pointerStartedOnBackdrop && isBackdrop(event)) closeDrawer();
+      pointerStartedOnBackdrop = false;
     });
 
     desktopQuery.addEventListener('change', synchronizeLayout);
@@ -128,7 +168,6 @@
     const links = Array.from(navigation.querySelectorAll("a[href^='#']"));
 
     const header = document.querySelector('.site-header');
-    const desktopQuery = window.matchMedia('(min-width: 64rem)');
 
     let framePending = false;
     let previousSection;
@@ -136,8 +175,7 @@
     function updateCurrentSection() {
       framePending = false;
 
-      const threshold =
-        desktopQuery.matches && header ? header.offsetHeight + 24 : 24;
+      const threshold = header ? header.offsetHeight + 24 : 24;
 
       let currentSection = sections[0];
 
