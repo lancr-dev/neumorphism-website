@@ -14,4 +14,3 @@ that generates CSS for raised and inset surfaces.
 - `index.html` — page content, navigation, and inline SVG favicon.
 - `style.css` — neumorphic surfaces, responsive layouts, and sticky header.
 - `script.js` — sidebar navigation, section highlighting, and CSS playground.
-- `assets/logo.png` — 512 × 512 PNG matching the favicon, with transparent corners.
