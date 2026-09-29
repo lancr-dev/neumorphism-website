@@ -5,7 +5,7 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-yellow?style=for-the-badge&logo=javascript&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-black?style=for-the-badge&logo=vercel&logoColor=white)
 
-A responsive neumorphism showcase by Lance Ducante, built with plain HTML,
+A responsive neumorphism showcase, built with HTML,
 CSS, and JavaScript. Explore soft UI components, design tips, and a playground
 that generates CSS for raised and inset surfaces.
 
