@@ -455,10 +455,71 @@
     form.setAttribute('data-playground-ready', '');
   }
 
+  function initializeScrollReveal() {
+    const root = document.documentElement;
+    const selector = [
+      '.hero-content',
+      '.hero-showcase',
+      '.about-grid > *',
+      '.design-note',
+      '.section-heading',
+      '.component-card',
+      '.playground-layout > *',
+      '.principle-item',
+      '.faq-item',
+      '.closing-panel',
+    ].join(',');
+    const items = Array.from(document.querySelectorAll(selector));
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    if (!items.length) return;
+
+    items.forEach((item, index) => {
+      item.classList.add('reveal-on-scroll');
+      item.style.setProperty('--reveal-delay', `${(index % 3) * 65}ms`);
+    });
+
+    if (reduceMotion.matches || !('IntersectionObserver' in window)) {
+      items.forEach((item) => item.classList.add('is-visible'));
+      root.classList.add('js', 'motion-ready');
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries, currentObserver) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          currentObserver.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -5% 0px' },
+    );
+
+    items.forEach((item) => observer.observe(item));
+    root.classList.add('js', 'motion-ready');
+  }
+
+  function initializeDemoLighting() {
+    const toggle = document.getElementById('demo-switch');
+    const composition = document.querySelector('.surface-composition');
+
+    if (!toggle || !composition) return;
+
+    const updateLighting = () => {
+      composition.dataset.lighting = toggle.checked ? 'soft' : 'bright';
+    };
+
+    toggle.addEventListener('change', updateLighting);
+    updateLighting();
+  }
+
   function initialize() {
     initializeNavigation();
     initializeSectionHighlighting();
     initializePlayground();
+    initializeScrollReveal();
+    initializeDemoLighting();
   }
 
   if (document.readyState === 'loading') {

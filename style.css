@@ -179,6 +179,28 @@ small {
 .section {
   padding-block: var(--section-space);
 }
+
+.reveal-on-scroll {
+  opacity: 1;
+  transform: none;
+}
+
+html.js.motion-ready .reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(1rem) scale(0.985);
+  transition:
+    opacity 560ms var(--ease),
+    transform 560ms var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+html.js.motion-ready .reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
 .text-accent {
   color: var(--color-accent);
 }
@@ -276,6 +298,35 @@ small {
 }
 
 @media (hover: hover) {
+  .feature-card,
+  .component-card {
+    transition:
+      transform var(--duration-normal) var(--ease),
+      box-shadow var(--duration-normal) var(--ease);
+  }
+  .feature-card:hover,
+  .feature-card:focus-within,
+  .component-card:hover,
+  .component-card:focus-within {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-strong);
+  }
+  .surface-orbit-center {
+    transition: transform 260ms var(--ease);
+  }
+  .surface-orbit-center:hover {
+    transform: scale(1.035);
+  }
+  .playground-surface:hover {
+    transform: translateY(-4px);
+  }
+  .faq-item {
+    transition: box-shadow var(--duration-normal) var(--ease);
+  }
+  .faq-item:hover,
+  .faq-item:focus-within {
+    box-shadow: var(--shadow-subtle);
+  }
   .button:not(:disabled):hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-raised);
@@ -506,6 +557,11 @@ small {
   border-radius: clamp(1.5rem, 3vw, 3rem);
   background: var(--color-surface);
 }
+
+.surface-composition[data-lighting='bright'] {
+  --shadow-dark: #b7bcc5;
+  --shadow-light: #ffffff;
+}
 .surface-orbit {
   display: grid;
   place-items: center;
@@ -527,6 +583,14 @@ small {
   font-size: clamp(2.75rem, 6vw, 4.5rem);
   font-weight: 750;
   letter-spacing: -0.08em;
+}
+.surface-orbit-logo {
+  display: block;
+  width: 64%;
+  max-width: 5rem;
+  height: auto;
+  border-radius: 20%;
+  object-fit: contain;
 }
 .surface-samples {
   display: grid;
@@ -586,6 +650,9 @@ small {
   border-radius: var(--radius-medium);
   background: var(--color-surface);
   box-shadow: var(--shadow-subtle);
+  transition:
+    transform var(--duration-normal) var(--ease),
+    box-shadow var(--duration-normal) var(--ease);
 }
 .feature-number {
   display: block;
@@ -623,6 +690,10 @@ small {
   padding: clamp(1.25rem, 3vw, 2.5rem);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-large);
+  box-shadow: var(--shadow-subtle);
+  transition:
+    transform var(--duration-normal) var(--ease),
+    box-shadow var(--duration-normal) var(--ease);
 }
 .component-preview {
   display: flex;
@@ -870,6 +941,10 @@ small {
   font-size: var(--text-h3);
   font-weight: 650;
   text-align: center;
+  transition:
+    box-shadow 280ms var(--ease),
+    border-radius 280ms var(--ease),
+    transform 220ms var(--ease);
 }
 .playground-surface[data-surface-style='inset'] {
   box-shadow:
@@ -1100,8 +1175,26 @@ small {
     transition: none;
     animation: none;
   }
+  .feature-card,
+  .component-card,
+  .playground-surface,
+  .surface-orbit-center,
+  .faq-item,
+  html.js.motion-ready .reveal-on-scroll {
+    transition: none;
+  }
   .button:not(:disabled):hover,
-  .button:not(:disabled):active {
+  .button:not(:disabled):active,
+  .feature-card:hover,
+  .feature-card:focus-within,
+  .component-card:hover,
+  .component-card:focus-within,
+  .playground-surface:hover,
+  .surface-orbit-center:hover {
+    transform: none;
+  }
+  html.js.motion-ready .reveal-on-scroll {
+    opacity: 1;
     transform: none;
   }
 }
