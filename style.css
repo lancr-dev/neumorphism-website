@@ -98,14 +98,14 @@ h3 {
 h1,
 h2 {
   font-weight: 750;
-  letter-spacing: -0.045em;
+  letter-spacing: normal;
 }
 h2 {
   font-size: var(--text-h2);
 }
 h3 {
   font-size: var(--text-h3);
-  letter-spacing: -0.025em;
+  letter-spacing: normal;
 }
 p {
   overflow-wrap: anywhere;
@@ -180,48 +180,28 @@ small {
   padding-block: var(--section-space);
 }
 
-.reveal-on-scroll {
-  opacity: 1;
-  transform: none;
-}
-
-html.js.motion-ready .reveal-on-scroll {
+.scroll-reveal {
   opacity: 0;
-  transform: translateY(1rem) scale(0.985);
+  transform: translateY(1.1rem) scale(0.985);
   transition:
-    opacity 560ms var(--ease),
-    transform 560ms var(--ease);
+    opacity 520ms var(--ease),
+    transform 520ms var(--ease);
   transition-delay: var(--reveal-delay, 0ms);
-  will-change: opacity, transform;
 }
-
-html.js.motion-ready .reveal-on-scroll.is-visible {
+.scroll-reveal.is-visible {
   opacity: 1;
-  transform: none;
-  will-change: auto;
+  transform: translateY(0) scale(1);
 }
 
 .text-accent {
   color: var(--color-accent);
-}
-.eyebrow,
-.component-label {
-  color: var(--color-accent);
-  font-size: var(--text-small);
-  font-weight: 700;
-  letter-spacing: 0.075em;
-  line-height: 1.6;
-  text-transform: uppercase;
 }
 
 .section-heading {
   max-width: 49rem;
   margin-bottom: var(--space-7);
 }
-.section-heading .eyebrow {
-  margin-bottom: var(--space-4);
-}
-.section-heading > p:not(.eyebrow) {
+.section-heading > p {
   max-width: 64ch;
   margin-top: var(--space-5);
   color: var(--color-muted);
@@ -298,19 +278,6 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
 }
 
 @media (hover: hover) {
-  .feature-card,
-  .component-card {
-    transition:
-      transform var(--duration-normal) var(--ease),
-      box-shadow var(--duration-normal) var(--ease);
-  }
-  .feature-card:hover,
-  .feature-card:focus-within,
-  .component-card:hover,
-  .component-card:focus-within {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-strong);
-  }
   .surface-orbit-center {
     transition: transform 260ms var(--ease);
   }
@@ -319,13 +286,6 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
   }
   .playground-surface:hover {
     transform: translateY(-4px);
-  }
-  .faq-item {
-    transition: box-shadow var(--duration-normal) var(--ease);
-  }
-  .faq-item:hover,
-  .faq-item:focus-within {
-    box-shadow: var(--shadow-subtle);
   }
   .button:not(:disabled):hover {
     transform: translateY(-2px);
@@ -349,7 +309,6 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
   top: 0;
   z-index: 20;
   background: var(--color-page);
-  border-bottom: 1px solid var(--color-border);
 }
 .site-header-inner {
   display: flex;
@@ -366,7 +325,7 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
   min-height: 2.75rem;
   font-size: 1.375rem;
   font-weight: 800;
-  letter-spacing: -0.055em;
+  letter-spacing: normal;
   text-decoration: none;
 }
 .brand-mark {
@@ -374,12 +333,7 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
   flex-shrink: 0;
   width: 2.75rem;
   height: 2.75rem;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-small);
-  box-shadow: var(--shadow-subtle);
-}
-.brand-dot {
-  color: var(--color-accent);
+  border-radius: 0.5rem;
 }
 .site-nav {
   display: flex;
@@ -389,7 +343,6 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
   width: 100%;
 }
 .nav-list,
-.hero-tags,
 .footer-links {
   list-style: none;
   margin: 0;
@@ -466,7 +419,7 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
 }
 .nav-drawer-heading h2 {
   font-size: 1.25rem;
-  letter-spacing: -0.035em;
+  letter-spacing: normal;
 }
 .nav-close {
   flex-shrink: 0;
@@ -515,9 +468,6 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
 .hero-showcase {
   min-width: 0;
 }
-.hero-content .eyebrow {
-  margin-bottom: var(--space-5);
-}
 .hero-title {
   font-size: var(--text-h1);
   overflow-wrap: anywhere;
@@ -534,18 +484,6 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
   gap: var(--space-4);
   margin-top: var(--space-6);
 }
-.hero-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3) var(--space-5);
-  margin-top: var(--space-6);
-  color: var(--color-muted);
-  font-size: var(--text-small);
-}
-.hero-tags li {
-  padding-bottom: var(--space-1);
-  border-bottom: 1px solid var(--color-control-border);
-}
 .hero-showcase {
   width: 100%;
   max-width: 30rem;
@@ -553,9 +491,6 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
 }
 .surface-composition {
   padding: clamp(1.5rem, 4vw, 3rem);
-  border: 1px solid var(--color-border);
-  border-radius: clamp(1.5rem, 3vw, 3rem);
-  background: var(--color-surface);
 }
 
 .surface-composition[data-lighting='bright'] {
@@ -582,7 +517,6 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
   color: var(--color-accent);
   font-size: clamp(2.75rem, 6vw, 4.5rem);
   font-weight: 750;
-  letter-spacing: -0.08em;
 }
 .surface-orbit-logo {
   display: block;
@@ -621,11 +555,6 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
   color: var(--color-muted);
   font-size: var(--text-small);
 }
-.surface-light-line {
-  flex: 0 0 1.5rem;
-  height: 2px;
-  background: var(--color-control-border);
-}
 .hero-showcase figcaption {
   max-width: 40ch;
   margin: var(--space-5) auto 0;
@@ -634,11 +563,6 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
   text-align: center;
 }
 
-.about,
-.playground,
-.faq {
-  border-top: 1px solid var(--color-border);
-}
 .about-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
@@ -646,21 +570,7 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
 }
 .feature-card {
   min-width: 0;
-  padding: clamp(1.5rem, 3vw, 2rem);
-  border-radius: var(--radius-medium);
-  background: var(--color-surface);
-  box-shadow: var(--shadow-subtle);
-  transition:
-    transform var(--duration-normal) var(--ease),
-    box-shadow var(--duration-normal) var(--ease);
-}
-.feature-number {
-  display: block;
-  margin-bottom: var(--space-6);
-  color: var(--color-accent);
-  font-size: var(--text-small);
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
+  padding: var(--space-4) 0;
 }
 .feature-card p {
   margin-top: var(--space-3);
@@ -668,8 +578,7 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
 }
 .design-note {
   margin-top: var(--space-7);
-  padding: var(--space-2) 0 var(--space-2) var(--space-5);
-  border-left: 3px solid var(--color-accent);
+  max-width: 64ch;
 }
 .design-note h3 {
   font-size: 1rem;
@@ -687,13 +596,6 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
 }
 .component-card {
   min-width: 0;
-  padding: clamp(1.25rem, 3vw, 2.5rem);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-large);
-  box-shadow: var(--shadow-subtle);
-  transition:
-    transform var(--duration-normal) var(--ease),
-    box-shadow var(--duration-normal) var(--ease);
 }
 .component-preview {
   display: flex;
@@ -708,11 +610,7 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
   align-content: center;
 }
 .component-description {
-  padding-top: var(--space-5);
-  border-top: 1px solid var(--color-border);
-}
-.component-label {
-  margin-bottom: var(--space-2);
+  padding: var(--space-4) 0;
 }
 .component-description > p:last-child {
   margin-top: var(--space-3);
@@ -850,9 +748,6 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
 
 .playground-notice {
   margin-bottom: var(--space-6);
-  padding: var(--space-4);
-  border: 1px dashed var(--color-control-border);
-  border-radius: var(--radius-small);
   color: var(--color-muted);
   font-size: var(--text-small);
 }
@@ -864,9 +759,7 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
 }
 .playground-form {
   min-width: 0;
-  padding: clamp(1.25rem, 3vw, 2rem);
-  border-radius: var(--radius-large);
-  box-shadow: var(--shadow-raised);
+  padding: var(--space-4) 0;
 }
 .playground-controls legend {
   margin-bottom: var(--space-6);
@@ -960,9 +853,7 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
 }
 .code-panel {
   min-width: 0;
-  padding: clamp(1rem, 3vw, 1.5rem);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-medium);
+  margin-top: var(--space-6);
 }
 .code-panel-header {
   display: flex;
@@ -1032,7 +923,6 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
   color: var(--color-muted);
 }
 
-/* 10 / Native FAQ disclosures */
 .faq-list {
   display: grid;
   align-content: start;
@@ -1040,8 +930,7 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
   min-width: 0;
 }
 .faq-item {
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-medium);
+  border-bottom: 1px solid var(--color-border);
 }
 .faq-item summary {
   min-height: 3.5rem;
@@ -1073,10 +962,7 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
   box-shadow: var(--shadow-strong);
   text-align: center;
 }
-.closing-panel .eyebrow {
-  margin-bottom: var(--space-5);
-}
-.closing-panel > p:not(.eyebrow) {
+.closing-panel > p {
   max-width: 54ch;
   margin: var(--space-5) auto var(--space-6);
   color: var(--color-muted);
@@ -1084,7 +970,6 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
 }
 .site-footer {
   padding-block: var(--space-6);
-  border-top: 1px solid var(--color-border);
 }
 .site-footer-inner {
   display: flex;
@@ -1175,33 +1060,22 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
     transition: none;
     animation: none;
   }
-  .feature-card,
-  .component-card,
-  .playground-surface,
-  .surface-orbit-center,
-  .faq-item,
-  html.js.motion-ready .reveal-on-scroll {
-    transition: none;
-  }
-  .button:not(:disabled):hover,
-  .button:not(:disabled):active,
-  .feature-card:hover,
-  .feature-card:focus-within,
-  .component-card:hover,
-  .component-card:focus-within,
-  .playground-surface:hover,
-  .surface-orbit-center:hover {
+  .scroll-reveal {
+    opacity: 1;
     transform: none;
   }
-  html.js.motion-ready .reveal-on-scroll {
-    opacity: 1;
+  .playground-surface,
+  .surface-orbit-center,
+  .button:not(:disabled):hover,
+  .button:not(:disabled):active,
+  .playground-surface:hover,
+  .surface-orbit-center:hover {
     transform: none;
   }
 }
 
 @media (forced-colors: active) {
   .button,
-  .feature-card,
   .surface-sample,
   .surface-orbit,
   .surface-orbit-center,
@@ -1267,8 +1141,6 @@ html.js.motion-ready .reveal-on-scroll.is-visible {
   .section {
     padding-block: 1.5rem;
   }
-  .feature-card,
-  .component-card,
   .faq-item,
   .code-panel {
     break-inside: avoid;
